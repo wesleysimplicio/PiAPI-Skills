@@ -1,0 +1,25 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^https://piapi.ai" },
+    { "pattern": "^https://yourapp" },
+    { "pattern": "^https://example.com" },
+    { "pattern": "^https://cdn.piapi.ai" }
+  ],
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "https://github.com/wesleysimplicio/PiAPI-Skills/blob/master/"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": ["https://github.com"],
+      "headers": { "Accept": "text/html" }
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206, 301, 302, 308, 999]
+}

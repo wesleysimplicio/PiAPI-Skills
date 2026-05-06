@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.eggs/
+build/
+dist/
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs / cache
+*.log
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+
+# Local env
+.env
+.env.local
+*.local
+
+# Output
+/tmp/
+/out/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.webm
+*.wav
+*.mp3
+!references/**/*.png
+!examples/**/*.png

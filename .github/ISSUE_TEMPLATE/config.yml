@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PiAPI documentation
+    url: https://piapi.ai/docs/overview
+    about: Upstream API reference (model catalog, pricing, LLM proxy).
+  - name: PiAPI status / pricing
+    url: https://piapi.ai/pricing
+    about: Live tier limits and pricing — verify before quoting in issues.
+  - name: Security disclosure
+    url: mailto:wesleybob4@gmail.com
+    about: Report vulnerabilities privately. Please do not file public issues for security bugs.

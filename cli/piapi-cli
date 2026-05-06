@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# piapi-cli — thin shim that runs the bundled CLI inside its dedicated venv.
+#
+# This shim is what the SKILL.md files reference, regardless of host agent.
+# It looks up the venv created by install.sh at:
+#     ~/.local/share/piapi-skill/venv
+# and falls back to a system `python3` if you skipped the venv install.
+set -euo pipefail
+
+VENV_PY="${PIAPI_PY:-$HOME/.local/share/piapi-skill/venv/bin/python}"
+CLI_PY="${PIAPI_CLI_PY:-$HOME/.local/share/piapi-skill/cli.py}"
+
+if [ ! -x "$VENV_PY" ]; then
+    if command -v python3 >/dev/null 2>&1; then
+        VENV_PY="$(command -v python3)"
+    else
+        echo "piapi-cli: no Python interpreter found at $VENV_PY and no system python3" >&2
+        echo "Run install.sh from https://github.com/wesleysimplicio/PiAPI-Skills" >&2
+        exit 127
+    fi
+fi
+
+if [ ! -f "$CLI_PY" ]; then
+    echo "piapi-cli: cli.py not found at $CLI_PY" >&2
+    echo "Run install.sh from https://github.com/wesleysimplicio/PiAPI-Skills" >&2
+    exit 127
+fi
+
+exec "$VENV_PY" "$CLI_PY" "$@"
