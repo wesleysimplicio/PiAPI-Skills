@@ -1,5 +1,8 @@
 # PiAPI Skills for Claude, Codex, Hermes, OpenClaw, and others
 
+> 🇺🇸 English. Leia em português: [README.pt-BR.md](README.pt-BR.md).
+
+
 Single skill bundle that teaches AI coding agents how to drive
 [PiAPI](https://piapi.ai) — Midjourney, Flux, Kling, Luma, Hailuo, Veo 3,
 Suno, Hunyuan, Faceswap, Trellis 3D, MMAudio, F5-TTS, Gemini Nano Banana,
