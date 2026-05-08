@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-05-08
+
+### Added
+- `pyproject.toml` `[project]` table with setuptools build-system, name `piapi-skills`, console-script `piapi-cli` resolving to `piapi_skills.cli:main`.
+- `cli/__init__.py` (empty) so setuptools recognizes `cli/` as a Python package, mapped to import name `piapi_skills` via `[tool.setuptools.package-dir]`.
+- Distributed as a Python package on PyPI (`pip install piapi-skills`).
+
+### Changed
+- Bump VERSION 1.1.0 -> 1.2.0 (minor: PyPI distribution added).
+
 ## [1.1.0] - 2026-05-07
 
 ### Added

@@ -1,3 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "piapi-skills"
+version = "1.2.0"
+description = "Provider-agnostic CLI for the PiAPI inference platform — Midjourney, Flux, Kling, Suno, Hailuo, Veo 3, Hunyuan, Faceswap, Trellis 3D, MMAudio, F5-TTS and the OpenAI-compatible LLM proxy. Single-file Python with a thin shell shim, plus skill bundle for Claude Code, Codex, Hermes, OpenClaw."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Wesley Simplicio", email = "wesleybob4@gmail.com" }]
+keywords = ["piapi", "midjourney", "flux", "kling", "suno", "hailuo", "veo3", "hunyuan", "faceswap", "claude", "codex", "agent", "skill", "cli", "ai", "media", "image-generation", "video-generation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = ["requests>=2.31"]
+
+[project.scripts]
+piapi-cli = "piapi_skills.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/wesleysimplicio/PiAPI-Skills"
+Repository = "https://github.com/wesleysimplicio/PiAPI-Skills"
+Issues = "https://github.com/wesleysimplicio/PiAPI-Skills/issues"
+Changelog = "https://github.com/wesleysimplicio/PiAPI-Skills/blob/master/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["piapi_skills"]
+
+[tool.setuptools.package-dir]
+piapi_skills = "cli"
+
 [tool.ruff]
 target-version = "py310"
 line-length = 100
