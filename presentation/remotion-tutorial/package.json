@@ -1,0 +1,31 @@
+{
+  "name": "piapi-skills-remotion-tutorial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion tutorial video explaining how to use PiAPI Skills.",
+  "scripts": {
+    "start": "remotion studio src/index.ts",
+    "build:en": "remotion render src/index.ts PiApiSkillsTutorialEn out/piapi-skills-tutorial.en.mp4",
+    "build:pt": "remotion render src/index.ts PiApiSkillsTutorialPt out/piapi-skills-tutorial.pt.mp4",
+    "build": "npm run build:en && npm run build:pt",
+    "still:en": "remotion still src/index.ts PiApiSkillsTutorialEn out/cover.en.png --frame=60",
+    "still:pt": "remotion still src/index.ts PiApiSkillsTutorialPt out/cover.pt.png --frame=60",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

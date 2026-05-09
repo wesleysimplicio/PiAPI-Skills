@@ -10,6 +10,37 @@ Seedance 2, plus the OpenAI-compatible LLM proxy — through one CLI.
 
 > Not affiliated with PiAPI. "PiAPI" is a trademark of its respective owner.
 
+## Watch the tutorial (1 min)
+
+<p align="center">
+  <a href="presentation/remotion-tutorial/media/en/tutorial.mp4">
+    <img src="presentation/remotion-tutorial/media/en/preview.gif" alt="PiAPI Skills tutorial — animated preview" width="820" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="presentation/remotion-tutorial/media/en/tutorial.mp4"><b>▶︎ Full MP4</b></a>
+  ·
+  <a href="presentation/remotion-tutorial/media/en/cover.png">Cover</a>
+  ·
+  <a href="presentation/remotion-tutorial/media/en/scenes/">Per-scene stills</a>
+  ·
+  <a href="presentation/remotion-tutorial/">Source (Remotion)</a>
+</p>
+
+A 9-scene animated walkthrough — install, configure `PIAPI_API_KEY`, CLI
+tour, model catalog, async submit/poll/result flow, and per-agent skill
+paths. Built with [Remotion](https://www.remotion.dev/); edit and re-render
+from `presentation/remotion-tutorial/`.
+
+### Scene gallery
+
+| | | |
+|:-:|:-:|:-:|
+| <img src="presentation/remotion-tutorial/media/en/scenes/01-intro.png" width="280" /><br/>**1. Intro** | <img src="presentation/remotion-tutorial/media/en/scenes/02-what-is-it.png" width="280" /><br/>**2. What is it** | <img src="presentation/remotion-tutorial/media/en/scenes/03-install.png" width="280" /><br/>**3. Install** |
+| <img src="presentation/remotion-tutorial/media/en/scenes/04-configure.png" width="280" /><br/>**4. Configure** | <img src="presentation/remotion-tutorial/media/en/scenes/05-cli-tour.png" width="280" /><br/>**5. CLI tour** | <img src="presentation/remotion-tutorial/media/en/scenes/06-models.png" width="280" /><br/>**6. Models** |
+| <img src="presentation/remotion-tutorial/media/en/scenes/07-workflow.png" width="280" /><br/>**7. Workflow** | <img src="presentation/remotion-tutorial/media/en/scenes/08-agents.png" width="280" /><br/>**8. Agents** | <img src="presentation/remotion-tutorial/media/en/scenes/09-outro.png" width="280" /><br/>**9. Outro** |
+
 ## Install
 
 ```bash
