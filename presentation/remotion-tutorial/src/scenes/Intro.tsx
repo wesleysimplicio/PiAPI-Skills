@@ -8,8 +8,9 @@ import {
 } from "remotion";
 import { Background, Sparkles } from "../components/Background";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
-export const Intro: React.FC = () => {
+export const Intro: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -110,8 +111,10 @@ export const Intro: React.FC = () => {
             marginTop: 10,
           }}
         >
-          Um <strong style={{ color: theme.green }}>CLI</strong>. 14+ modelos
-          de IA. Qualquer agent.
+          {s.intro.taglinePrefix}
+          <strong style={{ color: theme.green }}>{s.intro.taglineCli}</strong>
+          {s.intro.taglineMid}
+          {s.intro.taglineEnd}
         </div>
 
         <div

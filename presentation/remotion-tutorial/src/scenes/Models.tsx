@@ -9,6 +9,7 @@ import {
 import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
 type Model = {
   name: string;
@@ -42,9 +43,10 @@ const colorByFamily: Record<Model["family"], string> = {
   llm: theme.yellow,
 };
 
-const ModelTile: React.FC<{ m: Model; appearAt: number }> = ({
+const ModelTile: React.FC<{ m: Model; appearAt: number; familyLabel: string }> = ({
   m,
   appearAt,
+  familyLabel,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -92,13 +94,13 @@ const ModelTile: React.FC<{ m: Model; appearAt: number }> = ({
           textTransform: "uppercase",
         }}
       >
-        {m.family}
+        {familyLabel}
       </div>
     </div>
   );
 };
 
-export const Models: React.FC = () => {
+export const Models: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -120,9 +122,9 @@ export const Models: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Catálogo"
-          title="Mais de 14 famílias suportadas"
-          subtitle="Imagem, vídeo, música, 3D e LLMs no mesmo envelope: model + task_type + input."
+          eyebrow={s.models.eyebrow}
+          title={s.models.title}
+          subtitle={s.models.subtitle}
           align="left"
           accent={theme.purple}
         />
@@ -135,7 +137,12 @@ export const Models: React.FC = () => {
           }}
         >
           {models.map((m, i) => (
-            <ModelTile key={m.name} m={m} appearAt={20 + i * 5} />
+            <ModelTile
+              key={m.name}
+              m={m}
+              appearAt={20 + i * 5}
+              familyLabel={s.models.families[m.family]}
+            />
           ))}
         </div>
       </AbsoluteFill>

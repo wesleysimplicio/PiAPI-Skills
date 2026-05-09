@@ -9,6 +9,7 @@ import {
 import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
 type Step = {
   index: number;
@@ -17,30 +18,6 @@ type Step = {
   detail: string;
   color: string;
 };
-
-const steps: Step[] = [
-  {
-    index: 1,
-    title: "Submit",
-    endpoint: "POST /api/v1/task",
-    detail: "model + task_type + input",
-    color: theme.green,
-  },
-  {
-    index: 2,
-    title: "Poll / Wait",
-    endpoint: "GET /api/v1/task/{id}",
-    detail: "status: pending → processing → completed",
-    color: theme.yellow,
-  },
-  {
-    index: 3,
-    title: "Result",
-    endpoint: "data.output → URL",
-    detail: "imagem · vídeo · áudio · texto",
-    color: theme.pink,
-  },
-];
 
 const StepBlock: React.FC<{ s: Step; appearAt: number }> = ({
   s,
@@ -153,7 +130,7 @@ const Arrow: React.FC<{ appearAt: number }> = ({ appearAt }) => {
   );
 };
 
-export const Workflow: React.FC = () => {
+export const Workflow: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -163,6 +140,30 @@ export const Workflow: React.FC = () => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+
+  const steps: Step[] = [
+    {
+      index: 1,
+      title: s.workflow.steps[0].title,
+      endpoint: "POST /api/v1/task",
+      detail: s.workflow.steps[0].detail,
+      color: theme.green,
+    },
+    {
+      index: 2,
+      title: s.workflow.steps[1].title,
+      endpoint: "GET /api/v1/task/{id}",
+      detail: s.workflow.steps[1].detail,
+      color: theme.yellow,
+    },
+    {
+      index: 3,
+      title: s.workflow.steps[2].title,
+      endpoint: "data.output → URL",
+      detail: s.workflow.steps[2].detail,
+      color: theme.pink,
+    },
+  ];
 
   return (
     <AbsoluteFill style={{ opacity: fadeIn * fadeOut }}>
@@ -175,9 +176,9 @@ export const Workflow: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Fluxo"
-          title="Async-only. Sempre."
-          subtitle="Todo job de mídia passa pelo mesmo envelope. O LLM gateway é a única superfície síncrona."
+          eyebrow={s.workflow.eyebrow}
+          title={s.workflow.title}
+          subtitle={s.workflow.subtitle}
           align="left"
           accent={theme.yellow}
         />

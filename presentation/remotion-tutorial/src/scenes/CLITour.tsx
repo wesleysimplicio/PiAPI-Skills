@@ -10,6 +10,7 @@ import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { Terminal } from "../components/Terminal";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
 const Pill: React.FC<{
   emoji: string;
@@ -50,7 +51,7 @@ const Pill: React.FC<{
   );
 };
 
-export const CLITour: React.FC = () => {
+export const CLITour: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -72,8 +73,8 @@ export const CLITour: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Passo 3"
-          title="Tour pelos comandos"
+          eyebrow={s.cliTour.eyebrow}
+          title={s.cliTour.title}
           align="left"
           accent={theme.pink}
         />
@@ -95,7 +96,7 @@ export const CLITour: React.FC = () => {
         </div>
 
         <Terminal
-          title="piapi-cli — playground"
+          title={s.cliTour.terminalTitle}
           width={1700}
           appearAt={60}
           lines={[
@@ -106,7 +107,7 @@ export const CLITour: React.FC = () => {
               durationFrames: 50,
             },
             {
-              text: "→ task_id: mj_01HZ… status: pending → processing → completed ✓",
+              text: s.cliTour.completedNote,
               startFrame: 124,
               color: theme.green,
               durationFrames: 36,

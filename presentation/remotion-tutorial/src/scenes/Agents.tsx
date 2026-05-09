@@ -9,6 +9,7 @@ import {
 import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
 type Agent = {
   name: string;
@@ -16,15 +17,6 @@ type Agent = {
   path: string;
   color: string;
 };
-
-const agents: Agent[] = [
-  { name: "Claude Code", emoji: "🤖", path: "~/.claude/skills/piapi/", color: theme.yellow },
-  { name: "Codex", emoji: "🟢", path: "~/.codex/skills/piapi/", color: theme.green },
-  { name: "Cursor", emoji: "🪄", path: "~/.cursor/skills/piapi/", color: theme.blue },
-  { name: "Hermes", emoji: "🔮", path: "~/.hermes/skills/creative/piapi/", color: theme.purple },
-  { name: "Copilot", emoji: "🧭", path: ".github/copilot-instructions.md", color: theme.pink },
-  { name: "Outros", emoji: "✨", path: "~/.config/agents/skills/piapi/", color: theme.textMuted },
-];
 
 const AgentRow: React.FC<{ a: Agent; appearAt: number }> = ({ a, appearAt }) => {
   const frame = useCurrentFrame();
@@ -70,7 +62,7 @@ const AgentRow: React.FC<{ a: Agent; appearAt: number }> = ({ a, appearAt }) => 
   );
 };
 
-export const Agents: React.FC = () => {
+export const Agents: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -80,6 +72,15 @@ export const Agents: React.FC = () => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+
+  const agents: Agent[] = [
+    { name: "Claude Code", emoji: "🤖", path: "~/.claude/skills/piapi/", color: theme.yellow },
+    { name: "Codex", emoji: "🟢", path: "~/.codex/skills/piapi/", color: theme.green },
+    { name: "Cursor", emoji: "🪄", path: "~/.cursor/skills/piapi/", color: theme.blue },
+    { name: "Hermes", emoji: "🔮", path: "~/.hermes/skills/creative/piapi/", color: theme.purple },
+    { name: "Copilot", emoji: "🧭", path: ".github/copilot-instructions.md", color: theme.pink },
+    { name: s.agents.others, emoji: "✨", path: "~/.config/agents/skills/piapi/", color: theme.textMuted },
+  ];
 
   return (
     <AbsoluteFill style={{ opacity: fadeIn * fadeOut }}>
@@ -92,9 +93,9 @@ export const Agents: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Plug & play"
-          title="Funciona com seu agent favorito"
-          subtitle="O instalador detecta e copia a SKILL.md certa para cada host."
+          eyebrow={s.agents.eyebrow}
+          title={s.agents.title}
+          subtitle={s.agents.subtitle}
           align="left"
           accent={theme.blue}
         />

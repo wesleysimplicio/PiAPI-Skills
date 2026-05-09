@@ -4,8 +4,12 @@ import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { Card } from "../components/Card";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
-export const WhatIsIt: React.FC = () => {
+const accents = [theme.pink, theme.blue, theme.yellow];
+const icons = ["🎨", "🎬", "🎵"];
+
+export const WhatIsIt: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -26,9 +30,9 @@ export const WhatIsIt: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="O que é"
-          title="Uma skill, todos os agents."
-          subtitle="A mesma CLI conecta Claude Code, Codex, Cursor, Hermes, Copilot e qualquer agent que respeite o padrão AGENTS.md."
+          eyebrow={s.whatIsIt.eyebrow}
+          title={s.whatIsIt.title}
+          subtitle={s.whatIsIt.subtitle}
           align="left"
           accent={theme.green}
         />
@@ -40,33 +44,18 @@ export const WhatIsIt: React.FC = () => {
             marginTop: 40,
           }}
         >
-          <Card
-            icon="🎨"
-            title="Imagens"
-            subtitle="Midjourney · Flux · Gemini Nano Banana · Faceswap"
-            accent={theme.pink}
-            appearAt={20}
-            delay={0}
-            width={420}
-          />
-          <Card
-            icon="🎬"
-            title="Vídeos"
-            subtitle="Kling · Luma · Veo 3 · Hailuo · Hunyuan · Seedance"
-            accent={theme.blue}
-            appearAt={20}
-            delay={10}
-            width={420}
-          />
-          <Card
-            icon="🎵"
-            title="Áudio + LLM"
-            subtitle="Suno · F5-TTS · MMAudio · gateway OpenAI-compat"
-            accent={theme.yellow}
-            appearAt={20}
-            delay={20}
-            width={420}
-          />
+          {s.whatIsIt.cards.map((c, i) => (
+            <Card
+              key={c.title}
+              icon={icons[i]}
+              title={c.title}
+              subtitle={c.subtitle}
+              accent={accents[i]}
+              appearAt={20}
+              delay={i * 10}
+              width={420}
+            />
+          ))}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

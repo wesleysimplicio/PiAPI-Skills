@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Sequence, useCurrentFrame, interpolate } from "remotion";
 import { sceneDurations, theme } from "./theme";
+import { Locale, strings } from "./locale";
 import { Intro } from "./scenes/Intro";
 import { WhatIsIt } from "./scenes/WhatIsIt";
 import { Install } from "./scenes/Install";
@@ -41,7 +42,7 @@ const ProgressBar: React.FC<{ totalFrames: number }> = ({ totalFrames }) => {
   );
 };
 
-const Watermark: React.FC = () => (
+const Watermark: React.FC<{ locale: Locale }> = ({ locale }) => (
   <div
     style={{
       position: "absolute",
@@ -59,12 +60,15 @@ const Watermark: React.FC = () => (
       backdropFilter: "blur(8px)",
     }}
   >
-    PiAPI · Skills · v1
+    PiAPI · Skills · v1 · {locale.toUpperCase()}
   </div>
 );
 
-export const Video: React.FC = () => {
+export type VideoProps = { locale: Locale };
+
+export const Video: React.FC<VideoProps> = ({ locale }) => {
   const totalFrames = Object.values(sceneDurations).reduce((a, b) => a + b, 0);
+  const s = strings[locale];
 
   let cursor = 0;
   const at = (n: number) => {
@@ -76,33 +80,33 @@ export const Video: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: theme.bg }}>
       <Sequence from={at(sceneDurations.intro)} durationInFrames={sceneDurations.intro}>
-        <Intro />
+        <Intro s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.whatIsIt)} durationInFrames={sceneDurations.whatIsIt}>
-        <WhatIsIt />
+        <WhatIsIt s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.install)} durationInFrames={sceneDurations.install}>
-        <Install />
+        <Install s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.configure)} durationInFrames={sceneDurations.configure}>
-        <Configure />
+        <Configure s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.cliTour)} durationInFrames={sceneDurations.cliTour}>
-        <CLITour />
+        <CLITour s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.models)} durationInFrames={sceneDurations.models}>
-        <Models />
+        <Models s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.workflow)} durationInFrames={sceneDurations.workflow}>
-        <Workflow />
+        <Workflow s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.agents)} durationInFrames={sceneDurations.agents}>
-        <Agents />
+        <Agents s={s} />
       </Sequence>
       <Sequence from={at(sceneDurations.outro)} durationInFrames={sceneDurations.outro}>
-        <Outro />
+        <Outro s={s} />
       </Sequence>
-      <Watermark />
+      <Watermark locale={locale} />
       <ProgressBar totalFrames={totalFrames} />
     </AbsoluteFill>
   );

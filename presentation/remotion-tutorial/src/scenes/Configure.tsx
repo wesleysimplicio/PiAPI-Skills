@@ -4,8 +4,9 @@ import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { Terminal } from "../components/Terminal";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
-export const Configure: React.FC = () => {
+export const Configure: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -28,9 +29,9 @@ export const Configure: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Passo 2"
-          title="Configure sua API key"
-          subtitle="Pegue em piapi.ai/workspace/key e exporte na variável PIAPI_API_KEY."
+          eyebrow={s.configure.eyebrow}
+          title={s.configure.title}
+          subtitle={s.configure.subtitle}
           align="left"
           accent={theme.blue}
         />
@@ -48,7 +49,7 @@ export const Configure: React.FC = () => {
             },
             {
               prompt: "$",
-              text: 'export PIAPI_WEBHOOK_SECRET="shared-secret"   # opcional',
+              text: `export PIAPI_WEBHOOK_SECRET="shared-secret"   ${s.configure.optionalComment}`,
               startFrame: 84,
               durationFrames: 50,
               color: theme.textMuted,
@@ -75,8 +76,8 @@ export const Configure: React.FC = () => {
         >
           <span style={{ fontSize: 36 }}>🔑</span>
           <span>
-            <strong style={{ color: theme.yellow }}>Dica:</strong> persista a
-            chave no shell rc para não vazar em histórico de comandos.
+            <strong style={{ color: theme.yellow }}>{s.configure.tipLabel}</strong>{" "}
+            {s.configure.tipBody}
           </span>
         </div>
       </AbsoluteFill>

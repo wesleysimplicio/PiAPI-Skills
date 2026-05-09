@@ -8,8 +8,9 @@ import {
 } from "remotion";
 import { Background, Sparkles } from "../components/Background";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
-export const Outro: React.FC = () => {
+export const Outro: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -57,7 +58,7 @@ export const Outro: React.FC = () => {
             opacity: titleSpring,
           }}
         >
-          ⚡ Próximo passo
+          {s.outro.eyebrow}
         </div>
         <h1
           style={{
@@ -72,7 +73,8 @@ export const Outro: React.FC = () => {
             textShadow: `0 0 40px ${theme.green}55`,
           }}
         >
-          Comece <span style={{ color: theme.yellow }}>agora.</span>
+          {s.outro.titleMain}
+          <span style={{ color: theme.yellow }}>{s.outro.titleAccent}</span>
         </h1>
 
         <div
@@ -149,7 +151,7 @@ export const Outro: React.FC = () => {
             fontFamily: theme.fontSans,
           }}
         >
-          MIT License · Wesley Simplicio · 2026
+          {s.outro.footer}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

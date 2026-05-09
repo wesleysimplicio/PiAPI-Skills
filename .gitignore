@@ -47,6 +47,6 @@ htmlcov/
 *.mp3
 !references/**/*.png
 !examples/**/*.png
-!presentation/remotion-tutorial/media/*.png
-!presentation/remotion-tutorial/media/*.gif
-!presentation/remotion-tutorial/media/*.mp4
+!presentation/remotion-tutorial/media/**/*.png
+!presentation/remotion-tutorial/media/**/*.gif
+!presentation/remotion-tutorial/media/**/*.mp4

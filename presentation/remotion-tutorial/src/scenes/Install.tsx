@@ -4,6 +4,7 @@ import { Background } from "../components/Background";
 import { Title } from "../components/Title";
 import { Terminal } from "../components/Terminal";
 import { theme } from "../theme";
+import { Strings } from "../locale";
 
 const Step: React.FC<{
   index: number;
@@ -55,7 +56,7 @@ const Step: React.FC<{
   );
 };
 
-export const Install: React.FC = () => {
+export const Install: React.FC<{ s: Strings }> = ({ s }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const fadeOut = interpolate(frame, [160, 180], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -70,8 +71,8 @@ export const Install: React.FC = () => {
         }}
       >
         <Title
-          eyebrow="Passo 1"
-          title="Instalação em uma linha"
+          eyebrow={s.install.eyebrow}
+          title={s.install.title}
           align="left"
           accent={theme.green}
         />
@@ -88,19 +89,19 @@ export const Install: React.FC = () => {
                 durationFrames: 60,
               },
               {
-                text: "→ provisionando venv em ~/.local/share/piapi-skill",
+                text: s.install.logs[0],
                 startFrame: 84,
                 color: theme.textMuted,
                 durationFrames: 30,
               },
               {
-                text: "→ instalando piapi-cli em ~/.local/bin",
+                text: s.install.logs[1],
                 startFrame: 116,
                 color: theme.textMuted,
                 durationFrames: 26,
               },
               {
-                text: "→ copiando SKILL.md para Claude · Codex · Cursor · Hermes",
+                text: s.install.logs[2],
                 startFrame: 144,
                 color: theme.green,
                 durationFrames: 28,
@@ -115,9 +116,9 @@ export const Install: React.FC = () => {
               marginTop: 40,
             }}
           >
-            <Step index={1} label="Cria virtualenv Python 3.10+" appearAt={90} />
-            <Step index={2} label="Instala piapi-cli no PATH" appearAt={120} />
-            <Step index={3} label="Distribui SKILL.md para os agents" appearAt={148} />
+            <Step index={1} label={s.install.steps[0]} appearAt={90} />
+            <Step index={2} label={s.install.steps[1]} appearAt={120} />
+            <Step index={3} label={s.install.steps[2]} appearAt={148} />
           </div>
         </div>
       </AbsoluteFill>

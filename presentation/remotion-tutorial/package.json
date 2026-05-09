@@ -5,9 +5,11 @@
   "description": "Remotion tutorial video explaining how to use PiAPI Skills.",
   "scripts": {
     "start": "remotion studio src/index.ts",
-    "build": "remotion render src/index.ts PiApiSkillsTutorial out/piapi-skills-tutorial.mp4",
-    "build:webm": "remotion render src/index.ts PiApiSkillsTutorial out/piapi-skills-tutorial.webm --codec=vp8",
-    "still": "remotion still src/index.ts PiApiSkillsTutorial out/cover.png --frame=60",
+    "build:en": "remotion render src/index.ts PiApiSkillsTutorialEn out/piapi-skills-tutorial.en.mp4",
+    "build:pt": "remotion render src/index.ts PiApiSkillsTutorialPt out/piapi-skills-tutorial.pt.mp4",
+    "build": "npm run build:en && npm run build:pt",
+    "still:en": "remotion still src/index.ts PiApiSkillsTutorialEn out/cover.en.png --frame=60",
+    "still:pt": "remotion still src/index.ts PiApiSkillsTutorialPt out/cover.pt.png --frame=60",
     "upgrade": "remotion upgrade"
   },
   "dependencies": {
