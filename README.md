@@ -10,6 +10,27 @@ Seedance 2, plus the OpenAI-compatible LLM proxy — through one CLI.
 
 > Not affiliated with PiAPI. "PiAPI" is a trademark of its respective owner.
 
+## Watch the tutorial (1 min)
+
+<p align="center">
+  <a href="presentation/remotion-tutorial/media/tutorial.mp4">
+    <img src="presentation/remotion-tutorial/media/tutorial-preview.gif" alt="PiAPI Skills tutorial — animated preview" width="820" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="presentation/remotion-tutorial/media/tutorial.mp4"><b>▶︎ Full MP4</b></a>
+  ·
+  <a href="presentation/remotion-tutorial/media/cover.png">Cover</a>
+  ·
+  <a href="presentation/remotion-tutorial/">Source (Remotion)</a>
+</p>
+
+A 9-scene animated walkthrough — install, configure `PIAPI_API_KEY`, CLI
+tour, model catalog, async submit/poll/result flow, and per-agent skill
+paths. Built with [Remotion](https://www.remotion.dev/); edit and re-render
+from `presentation/remotion-tutorial/`.
+
 ## Install
 
 ```bash
